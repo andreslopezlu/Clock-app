@@ -1,7 +1,9 @@
 
+import Clock from "../../components/Clock"
+
 const Home = () => {
     return (
-        <p>home</p>
+        <Clock />
     )
 }
 

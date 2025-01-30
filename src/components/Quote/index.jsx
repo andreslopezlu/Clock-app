@@ -1,9 +1,13 @@
 
-const Quote = () => {
+const Quote = ({quotesData}) => {
+
+    const quote = quotesData.quote
+    const author = quotesData.author
+
     return (
-        <div className="quote">
-            <p className="quote">“The science of operations, as derived from mathematics more especially, is a science of itself, and has its own abstract truth and value.”</p>
-            <p className="author">Ada Lovelace</p>
+        <div className="quote-container">
+            <p className="quote-text">{quote}</p>
+            <p className="quote-author">{author}</p>
         </div>
     )
 }
