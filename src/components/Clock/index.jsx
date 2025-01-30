@@ -1,24 +1,29 @@
+import { useEffect } from 'react'
+
 import Quote from '../Quote'
 import Greeting from '../Greeting'
 import Time from '../Time'
 import Location from '../Location'
 import LocationDetails from '../LocationDetails'
+
 import useTimezoneApi from '../../hooks/useTimeZoneApi'
-import { useEffect } from 'react'
+import useQuotesApi from '../../hooks/useQuotesApi'
 
 const Clock = () => {
-    const {data, isLoading, error, getData} = useTimezoneApi()
+    const {locationData, locationIsLoading, locationError, getLocationData} = useTimezoneApi()
+    const {quotesData, quotesIsLoading, quotesError, getQuotesData} = useQuotesApi()
 
     useEffect(() => {
-        getData()
+        getLocationData()
+        getQuotesData()
     }, [])
 
-    if(error) {
+    if(locationError || quotesError) {
         console.log("Error");
         return <div>Error...</div>
     }
 
-    if (isLoading) {
+    if (locationIsLoading || quotesIsLoading) {
         console.log("Cargando...");
         return <div>Cargando...</div>
     }
@@ -26,13 +31,12 @@ const Clock = () => {
     return (
         <>  
             <div>hola INmundo animal</div>
-            <Quote />
+            <Quote quotesData={quotesData}/>
             <Greeting />
             <Time />
             <Location />
             <LocationDetails />
             <button>Consular api</button>
-            <div>{data["country_capital"]}</div>
         </>
     )
 }

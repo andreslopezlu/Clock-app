@@ -2,29 +2,27 @@ import { useState } from "react"
 import axios from "axios"
 
 const useTimezoneApi = () => {
-    const [data, setData] = useState([])
-    const [isLoading, setIsLoading] = useState(true)
-    const [error, setError] = useState(false)
+    const [locationData, setLocationData] = useState([])
+    const [locationIsLoading, setLocationIsLoading] = useState(true)
+    const [locationError, setLocationError] = useState(false)
 
-    // const axios = require('axios').default;
-
-    const url = "https://api.ipgeolocation.io/ipgeo?apiKey=a6329416c0f74f62932afe4ac1732502"
+    const url = `https://api.ipgeolocation.io/ipgeo?apiKey=${import.meta.env.VITE_LOCATION_API_KEY}`
     const timeOut = 50000
 
-    async function getData(urlParams) {
+    async function getLocationData(urlParams) {
         try{
             const response = await axios.get(url, {timeout : timeOut})
             const data = response.data
             console.log(data)
-            setData(data)
-            setIsLoading(false)
+            setLocationData(data)
+            setLocationIsLoading(false)
         } catch(error) {
             console.log(error)
-            setError(error)
+            setLocationError(error)
         }
     }
 
-    return {data, isLoading, error, getData}
+    return {locationData, locationIsLoading, locationError, getLocationData}
 }
 
 export default useTimezoneApi
