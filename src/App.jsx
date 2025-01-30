@@ -7,10 +7,9 @@ import Profile from './views/profile'
 function App() {
   return (
     <>
-      <div>hola cara de bola</div>
       <BrowserRouter>
         <Routes>
-            <Route path="/home" element={<Home />} />
+            <Route path='/' element={<Home />} />
             <Route path="/welcome" element={<Welcome />} />
             <Route path="/profile" element={<Profile />} />
         </Routes>
