@@ -3,12 +3,24 @@ import Greeting from '../Greeting'
 import Time from '../Time'
 import Location from '../Location'
 import LocationDetails from '../LocationDetails'
-const axios = require('axios').default;
+import useTimezoneApi from '../../hooks/useTimeZoneApi'
+import { useEffect } from 'react'
 
 const Clock = () => {
+    const {data, isLoading, error, getData} = useTimezoneApi()
 
-    const handleClick = () => {
+    useEffect(() => {
+        getData()
+    }, [])
 
+    if(error) {
+        console.log("Error");
+        return <div>Error...</div>
+    }
+
+    if (isLoading) {
+        console.log("Cargando...");
+        return <div>Cargando...</div>
     }
 
     return (
@@ -19,7 +31,8 @@ const Clock = () => {
             <Time />
             <Location />
             <LocationDetails />
-            <button onClick={handleClick}>Consular api</button>
+            <button>Consular api</button>
+            <div>{data["country_capital"]}</div>
         </>
     )
 }
