@@ -32,10 +32,10 @@ const Clock = () => {
         <>  
             <div>hola INmundo animal</div>
             <Quote quotesData={quotesData}/>
-            <Greeting />
-            <Time />
-            <Location />
-            <LocationDetails />
+            <Greeting locationData={locationData} />
+            <Time locationData={locationData} />
+            <Location locationData={locationData} />
+            <LocationDetails locationData={locationData} />
             <button>Consular api</button>
         </>
     )
