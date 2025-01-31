@@ -1,8 +1,8 @@
 
-const Location = () => {
+const Location = ({locationData}) => {
     return (
         <div className="location">
-            <p>IN LONDON, UK</p>
+            <p>{locationData["country_capital"]}, {locationData["country_code2"]} {locationData["country_emoji"]}</p>
         </div>
     )
 }
