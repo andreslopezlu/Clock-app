@@ -1,10 +1,8 @@
 
-const Time = ({locationData}) => {
-
-    const time = locationData["time_zone"]["current_time"].slice(11, 16)
+const Time = ({time}) => {
 
     return (
-        <div className="location">
+        <div className="time-container">
             <p>{time}</p>
         </div>
     )
