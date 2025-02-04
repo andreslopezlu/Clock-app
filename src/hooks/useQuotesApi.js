@@ -13,11 +13,10 @@ const useQuotesApi = () => {
         try {
             const response = await axios.get(url, {timeOut : timeOut})
             const data = response.data[0]
-            console.log(data)
             setQuotesData(data)
             setQuotesIsLoading(false)
         } catch(error) {
-            console.log(error)
+            console.error(error)
             setQuotesError(error)
         }
     }
