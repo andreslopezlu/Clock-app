@@ -17,21 +17,23 @@ const Clock = () => {
 
     const stablishTime = async () => {
         try {
-            const hour = await (locationData["time_zone"]["current_time"]).slice(11, 16)
-            console.log(hour);
-            setTime(hour)
-        } catch(error) {
-            console.log(error)
+          const currentTime = locationData?.["time_zone"]?.["current_time"]
+          const hour = currentTime?.slice(11, 16) ?? ""
+          setTime(hour)
+        } catch (error) {
+          console.error(error)
         }
     }
 
     useEffect(() => {
         stablishTime()
+        console.log("cuando se actualiza")
     }, [locationData])
 
     useEffect(() => {
         getLocationData()
         getQuotesData()
+        console.log("cuando se monta")
     }, [])
 
     if (locationIsLoading || quotesIsLoading) {
@@ -40,7 +42,7 @@ const Clock = () => {
     }
 
     if(locationError || quotesError) {
-        console.log("Error");
+        console.error("Error");
         return <div>Error...</div>
     }
 

@@ -13,11 +13,10 @@ const useTimezoneApi = () => {
         try{
             const response = await axios.get(url, {timeout : timeOut})
             const data = response.data
-            console.log(data)
             setLocationData(data)
             setLocationIsLoading(false)
         } catch(error) {
-            console.log(error)
+            console.error(error)
             setLocationError(error)
         }
     }

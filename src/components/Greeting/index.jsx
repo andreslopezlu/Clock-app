@@ -13,10 +13,9 @@ const Greeting = ({time}) => {
             } else {
                 result = "EVENING"
             }
-            console.log(result);
             return result
         } catch(error){
-            console.log(error)
+            console.error(error)
         }
     }
 
