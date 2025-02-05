@@ -48,7 +48,7 @@ const Clock = () => {
 
     return (
         <>  
-            <div>hola INmundo animal</div>
+            <div className='saludo'>hola INmundo animal</div>
             <Quote quotesData={quotesData}/>
             <Greeting time={time} />
             <Time time={time} />
