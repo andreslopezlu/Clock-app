@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useState, useRef } from 'react'
 
 import Quote from '../Quote'
 import Greeting from '../Greeting'
@@ -6,18 +6,18 @@ import Time from '../Time'
 import Location from '../Location'
 import LocationDetails from '../LocationDetails'
 
-import useTimezoneApi from '../../hooks/useTimeZoneApi'
+import useLocationApi from '../../hooks/useLocationApi'
 import useQuotesApi from '../../hooks/useQuotesApi'
-import { use } from 'react'
 
 const Clock = () => {
-    const {locationData, locationIsLoading, locationError, getLocationData} = useTimezoneApi()
+    const {locationData, locationIsLoading, locationError, getLocationData} = useLocationApi()
     const {quotesData, quotesIsLoading, quotesError, getQuotesData} = useQuotesApi()
     const [time, setTime] = useState(null)
+    const timeZone = useRef("")
 
     const stablishTime = async () => {
         try {
-          const currentTime = locationData?.["time_zone"]?.["current_time"]
+          const currentTime = locationData?.["time_zone"]?.["current_time"] ?? ""
           const hour = currentTime?.slice(11, 16) ?? ""
           setTime(hour)
         } catch (error) {
@@ -25,21 +25,23 @@ const Clock = () => {
         }
     }
 
+    const stablishTimeZone = async () => {
+        try {
+          timeZone.current = locationData?.["time_zone"]?.["name"] ?? ""
+        } catch (error) {
+            console.error(error)
+        }   
+    }
+
     useEffect(() => {
         stablishTime()
-        console.log("cuando se actualiza")
+        stablishTimeZone()
     }, [locationData])
 
     useEffect(() => {
         getLocationData()
         getQuotesData()
-        console.log("cuando se monta")
     }, [])
-
-    if (locationIsLoading || quotesIsLoading) {
-        console.log("Cargando...");
-        return <div>Cargando...</div>
-    }
 
     if(locationError || quotesError) {
         console.error("Error");
@@ -53,7 +55,7 @@ const Clock = () => {
             <Greeting time={time} />
             <Time time={time} />
             <Location locationData={locationData} />
-            <LocationDetails locationData={locationData} />
+            <LocationDetails locationData={locationData} timeZone={timeZone.current} />
             <button>Consular api</button>
         </>
     )

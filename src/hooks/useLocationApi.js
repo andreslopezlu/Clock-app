@@ -1,7 +1,7 @@
 import { useState } from "react"
 import axios from "axios"
 
-const useTimezoneApi = () => {
+const useLocationApi = () => {
     const [locationData, setLocationData] = useState([])
     const [locationIsLoading, setLocationIsLoading] = useState(true)
     const [locationError, setLocationError] = useState(false)
@@ -24,4 +24,4 @@ const useTimezoneApi = () => {
     return {locationData, locationIsLoading, locationError, getLocationData}
 }
 
-export default useTimezoneApi
+export default useLocationApi

@@ -1,5 +1,24 @@
 
-const LocationDetails = () => {
+import { useEffect, useRef } from "react"
+import useTimezoneApi from "../../hooks/useTimeZone"
+
+const LocationDetails = ({locationData, timeZone}) => {
+    const {timeZoneData, isTimeZoneLoading, timeZoneError, getTimeZoneData} = useTimezoneApi()
+    const timeData = useRef(null)
+    
+    useEffect(() => {
+        getTimeZoneData(timeZone)
+    }, [timeZone])
+
+    const today = new Date();
+    const dayWeek = today.getDay();
+
+    function dayOfTheYear(date) {
+        return Math.floor((date - new Date(date.getFullYear(), 0, 0)) / 1000 / 60 / 60 / 24);
+      }
+
+    const dayYear = dayOfTheYear(today)
+
     return (
         <div className="location-details-container">
             <button>More</button>
@@ -7,19 +26,19 @@ const LocationDetails = () => {
             <div className="details">
                 <div className="time-zone">
                     <p>CURRENT TIMEZONE</p>
-                    <p>Europe/London</p>
+                    <p>{timeZone}</p>
                 </div>
                 <div className="day-year">
                     <p>DAY OF THE YEAR</p>
-                    <p>295</p>
+                    <p>{dayYear}</p>
                 </div>
                 <div className="day-week">
                     <p>DAY OF THE WEEK</p>
-                    <p>5</p>
+                    <p>{dayWeek}</p>
                 </div>
                 <div className="week">
                     <p>WEEK NUMBER</p>
-                    <p>42</p>
+                    <p>{timeZoneData.week}</p>
                 </div>
             </div>
         </div>
