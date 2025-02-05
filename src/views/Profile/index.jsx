@@ -1,7 +1,7 @@
 
 const Profile = () => {
     return (
-        <p>profile</p>
+        <p className="profile-container">profile</p>
     )
 }
 

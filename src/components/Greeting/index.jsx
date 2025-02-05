@@ -22,7 +22,7 @@ const Greeting = ({time}) => {
     const timeOfTheDay = stablihTimeOfTheDay()
 
     return (
-        <div className="greeting">
+        <div className="greeting-container">
             <img src="../../assets/desktop/icon-sun.svg" alt="morning-icon" />
             <p>{`GOOD ${timeOfTheDay}, IT’S CURRENTLY`}</p>
         </div>

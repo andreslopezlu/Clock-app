@@ -1,7 +1,7 @@
 
 const LocationDetails = () => {
     return (
-        <div className="location-details">
+        <div className="location-details-container">
             <button>More</button>
             <img src="../../assets/desktop/icon-arrow-down.svg" alt="more-icon" />
             <div className="details">

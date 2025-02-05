@@ -6,7 +6,7 @@ const ErrorPage = () => {
     console.log(error)
 
     return (
-        <div className="error">
+        <div className="error-container">
             <h3>Oops!</h3>
             <p>{error.statusText} {error.status}</p>
             <p>{error.data}</p>
