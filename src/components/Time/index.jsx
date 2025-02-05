@@ -1,4 +1,3 @@
-
 const Time = ({time}) => {
 
     return (

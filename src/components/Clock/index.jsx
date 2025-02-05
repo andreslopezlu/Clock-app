@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from 'react'
+import { useEffect, useRef } from 'react'
 
 import Quote from '../Quote'
 import Greeting from '../Greeting'
@@ -12,7 +12,6 @@ import useQuotesApi from '../../hooks/useQuotesApi'
 const Clock = () => {
     const {locationData, locationIsLoading, locationError, getLocationData} = useLocationApi()
     const {quotesData, quotesIsLoading, quotesError, getQuotesData} = useQuotesApi()
-    // const [time, setTime] = useState(null)
     const timeZone = useRef("")
     const time = useRef("")
 
@@ -20,7 +19,6 @@ const Clock = () => {
         try {
           const currentTime = locationData?.["time_zone"]?.["current_time"] ?? ""
           const hour = currentTime?.slice(11, 16) ?? ""
-        //   setTime(hour)
           time.current = hour
         } catch (error) {
           console.error(error)

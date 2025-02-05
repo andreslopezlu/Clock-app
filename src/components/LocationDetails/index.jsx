@@ -1,8 +1,8 @@
+import { useEffect } from "react"
 
-import { useEffect, useRef } from "react"
 import useTimezoneApi from "../../hooks/useTimeZone"
 
-const LocationDetails = ({locationData, timeZone}) => {
+const LocationDetails = ({timeZone}) => {
     const {timeZoneData, isTimeZoneLoading, timeZoneError, getTimeZoneData} = useTimezoneApi()
     
     useEffect(() => {
