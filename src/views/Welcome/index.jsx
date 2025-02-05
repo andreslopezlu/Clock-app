@@ -14,21 +14,21 @@ const Welcome = () => {
     }   
     
     console.log(errors)
-    
+
     return (
         <>        
             <form className="register-form" onSubmit={handleSubmit(sendFormData)}>
                 <label>
                     Email
-                    <input {...register("email", {required: true})} />
+                    <input {...register("email", {required: true, maxLength: 50})} />
                 </label>
                 <label>
                     Password
-                    <input {...register("password", {required: true})} />
+                    <input type="password" {...register("password", {required: true, maxLength: 50})} />
                 </label>
                 <label>
                     Phone
-                    <input {...register("phone", {required: true})} />
+                    <input {...register("phone", {required: true, maxLength: 12})} />
                 </label>
                 <button type="submit">Submit</button>
             </form>
