@@ -12,14 +12,16 @@ import useQuotesApi from '../../hooks/useQuotesApi'
 const Clock = () => {
     const {locationData, locationIsLoading, locationError, getLocationData} = useLocationApi()
     const {quotesData, quotesIsLoading, quotesError, getQuotesData} = useQuotesApi()
-    const [time, setTime] = useState(null)
+    // const [time, setTime] = useState(null)
     const timeZone = useRef("")
+    const time = useRef("")
 
     const stablishTime = async () => {
         try {
           const currentTime = locationData?.["time_zone"]?.["current_time"] ?? ""
           const hour = currentTime?.slice(11, 16) ?? ""
-          setTime(hour)
+        //   setTime(hour)
+          time.current = hour
         } catch (error) {
           console.error(error)
         }
@@ -43,6 +45,11 @@ const Clock = () => {
         getQuotesData()
     }, [])
 
+    if(locationIsLoading || quotesIsLoading) {
+        console.error("Cargando");
+        return <div>Cargando...</div>
+    }
+
     if(locationError || quotesError) {
         console.error("Error");
         return <div>Error...</div>
@@ -52,11 +59,10 @@ const Clock = () => {
         <>  
             <div className='saludo'>hola INmundo animal</div>
             <Quote quotesData={quotesData}/>
-            <Greeting time={time} />
-            <Time time={time} />
+            <Greeting time={time.current} />
+            <Time time={time.current} />
             <Location locationData={locationData} />
             <LocationDetails locationData={locationData} timeZone={timeZone.current} />
-            <button>Consular api</button>
         </>
     )
 }

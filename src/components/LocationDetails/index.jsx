@@ -4,7 +4,6 @@ import useTimezoneApi from "../../hooks/useTimeZone"
 
 const LocationDetails = ({locationData, timeZone}) => {
     const {timeZoneData, isTimeZoneLoading, timeZoneError, getTimeZoneData} = useTimezoneApi()
-    const timeData = useRef(null)
     
     useEffect(() => {
         getTimeZoneData(timeZone)
@@ -15,7 +14,7 @@ const LocationDetails = ({locationData, timeZone}) => {
 
     function dayOfTheYear(date) {
         return Math.floor((date - new Date(date.getFullYear(), 0, 0)) / 1000 / 60 / 60 / 24);
-      }
+    }
 
     const dayYear = dayOfTheYear(today)
 
