@@ -3,7 +3,7 @@ import axios from "axios"
 
 const useTimezoneApi = (timeZone) => {
     const [timeZoneData, setTimeZoneData] = useState([])
-    const [isTimeZoneLoading, setIsTimeZoneLoading] = useState(false)
+    const [isTimeZoneLoading, setIsTimeZoneLoading] = useState(true)
     const [timeZoneError, setTimeZoneError] = useState(false)
 
     
@@ -14,7 +14,7 @@ const useTimezoneApi = (timeZone) => {
             const response = await axios.get(url, {timeout: timeOut})
             const data = response.data
             setTimeZoneData(data)
-            setIsTimeZoneLoading(true)
+            setIsTimeZoneLoading(false)
         } catch (error) {
             setTimeZoneError(error)
             console.error(error)
