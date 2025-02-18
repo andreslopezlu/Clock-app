@@ -2,12 +2,7 @@ import { useEffect } from "react"
 
 import useTimezoneApi from "../../hooks/useTimeZone"
 
-const LocationDetails = ({timeZone}) => {
-    const {timeZoneData, isTimeZoneLoading, timeZoneError, getTimeZoneData} = useTimezoneApi()
-    
-    useEffect(() => {
-        getTimeZoneData(timeZone)
-    }, [timeZone])
+const LocationDetails = ({timeZoneData, timeZone}) => {
 
     const today = new Date();
     const dayWeek = today.getDay();
@@ -37,7 +32,7 @@ const LocationDetails = ({timeZone}) => {
                 </div>
                 <div className="week">
                     <p>WEEK NUMBER</p>
-                    <p>{timeZoneData.week}</p>
+                    <p>{timeZoneData["week"]}</p>
                 </div>
             </div>
         </div>
