@@ -1,13 +1,26 @@
 
-const Quote = ({quotesData}) => {
+import styles from './Quote.module.css'
 
-    const quote = quotesData.quote
-    const author = quotesData.author
+import useQuotesApi from '../../hooks/useQuotesApi'
+
+const Quote = ({quotesData, getQuotesData}) => {
+ 
+    let quote = quotesData.quote
+    let author = quotesData.author
+
+    const handleRefreshClick = () => {
+        getQuotesData()
+        quote = quotesData.quote
+        author = quotesData.author
+    }
 
     return (
-        <div className="quote-container">
-            <p className="quote-text">{quote}</p>
-            <p className="quote-author">{author}</p>
+        <div className={styles.quoteContainer}>
+            <div className={styles.quoteTextContainer}>
+                <p className={styles.text}>"{quote}"</p>
+                <div className={styles.refreshButton} onClick={handleRefreshClick}></div>
+            </div>
+            <p className={styles.quoteAuthor}>{author}</p>
         </div>
     )
 }

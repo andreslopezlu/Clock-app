@@ -1,8 +1,10 @@
+import styles from './Time.module.css'
+
 const Time = ({time}) => {
 
     return (
-        <div className="time-container">
-            <p>{time}</p>
+        <div className={styles.timeContainer}>
+            <p className={styles.timeText}>{time}</p>
         </div>
     )
 }

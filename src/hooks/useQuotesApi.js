@@ -9,7 +9,7 @@ const useQuotesApi = () => {
     const url = `https://api.api-ninjas.com/v1/quotes?X-Api-Key=${import.meta.env.VITE_NINJA_APIS_KEY}`
     const timeOut = 50000
 
-    async function getQuotesData(urlParams) {
+    async function getQuotesData() {
         try {
             const response = await axios.get(url, {timeOut : timeOut})
             const data = response.data[0]

@@ -2,6 +2,8 @@ import { useEffect } from "react"
 
 import useTimezoneApi from "../../hooks/useTimeZone"
 
+import styles from './LocationDetails.module.css'
+
 const LocationDetails = ({timeZoneData, timeZone}) => {
 
     const today = new Date();
@@ -14,25 +16,23 @@ const LocationDetails = ({timeZoneData, timeZone}) => {
     const dayYear = dayOfTheYear(today)
 
     return (
-        <div className="location-details-container">
-            <button>More</button>
-            <img src="../../assets/desktop/icon-arrow-down.svg" alt="more-icon" />
-            <div className="details">
-                <div className="time-zone">
-                    <p>CURRENT TIMEZONE</p>
-                    <p>{timeZone}</p>
+        <div className={styles.locationDetainsContainer}>
+            <div className={styles.details}>
+                <div className={styles.detailItem}>
+                    <p className={styles.detailName}>CURRENT TIMEZONE</p>
+                    <p className={styles.detailValue}>{timeZone}</p>
                 </div>
-                <div className="day-year">
-                    <p>DAY OF THE YEAR</p>
-                    <p>{dayYear}</p>
+                <div className={styles.detailItem}>
+                    <p className={styles.detailName}>DAY OF THE YEAR</p>
+                    <p className={styles.detailValue}>{dayYear}</p>
                 </div>
-                <div className="day-week">
-                    <p>DAY OF THE WEEK</p>
-                    <p>{dayWeek}</p>
+                <div className={styles.detailItem}>
+                    <p className={styles.detailName}>DAY OF THE WEEK</p>
+                    <p className={styles.detailValue}>{dayWeek}</p>
                 </div>
-                <div className="week">
-                    <p>WEEK NUMBER</p>
-                    <p>{timeZoneData["week"]}</p>
+                <div className={styles.detailItem}>
+                    <p className={styles.detailName}>WEEK NUMBER</p>
+                    <p className={styles.detailValue}>{timeZoneData["week"]}</p>
                 </div>
             </div>
         </div>

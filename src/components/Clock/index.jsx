@@ -13,6 +13,8 @@ import useTimezoneApi from '../../hooks/useTimeZone'
 import stablishTime from '../../utils/stablisTime'
 import stablishTimeZone from '../../utils/stablishTimeZone'
 
+import styles from './Clock.module.css'
+
 const Clock = () => {
     const {quotesData, quotesIsLoading, quotesError, getQuotesData} = useQuotesApi()
     const {locationData, locationIsLoading, locationError, getLocationData} = useLocationApi()
@@ -63,12 +65,16 @@ const Clock = () => {
 
     return (
         <>  
-            <div className='saludo'>hola INmundo animal</div>
-            <Quote quotesData={quotesData}/>
-            <Greeting time={time} />
-            <Time time={time} />
-            <Location locationData={locationData} />
-            <LocationDetails timeZoneData={timeZoneData} timeZone={timeZone} />
+            <main className={styles.main}>
+                <div className={styles.darkDiv}></div>
+                <div className={styles.lightDiv}>
+                    <Quote quotesData={quotesData} getQuotesData={getQuotesData} className={styles.quote} />
+                    <Greeting time={time} className={styles.greeting} />
+                    <Time time={time} className={styles.time} />
+                    <Location locationData={locationData} className={styles.location} />
+                    <LocationDetails timeZoneData={timeZoneData} timeZone={timeZone} className={styles.locationDetails} />
+                </div>
+            </main>
         </>
     )
 }

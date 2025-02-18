@@ -1,0 +1,25 @@
+
+.main {
+    display: flex;
+    flex-direction: column;
+    background-image: url('../../assets/mobile/bg-image-daytime.jpg');
+    background-size: cover;
+    padding-left: 7%;
+    padding-right: 7%;
+    position: relative;
+    padding-top: 32px;
+}
+
+.darkDiv {
+    background-color: rgba(0, 0, 0, 0.3);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.lightDiv {
+    z-index: 2;
+}

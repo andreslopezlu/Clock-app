@@ -9,7 +9,7 @@ const useLocationApi = () => {
     const url = `https://api.ipgeolocation.io/ipgeo?apiKey=${import.meta.env.VITE_LOCATION_API_KEY}`
     const timeOut = 50000
 
-    async function getLocationData(urlParams) {
+    async function getLocationData() {
         try{
             const response = await axios.get(url, {timeout : timeOut})
             const data = response.data

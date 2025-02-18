@@ -1,0 +1,13 @@
+.timeContainer {
+    margin-bottom: 16px;
+}
+
+.timeText {
+    color: #FFF;
+    font-family: Inter;
+    font-size: 100px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 100px;
+    letter-spacing: -2.5px;
+}
