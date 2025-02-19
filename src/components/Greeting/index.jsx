@@ -1,15 +1,17 @@
+import { useState } from "react"
 import stablihTimeOfTheDay from "../../utils/stablishTimeOfTheDay"
 
 import styles from './Greeting.module.css'
 
-const Greeting = ({time}) => {
+const Greeting = ({timeOfTheDay}) => {
 
-    const timeOfTheDay = stablihTimeOfTheDay(time)
+    const [isVisible, setIsVisible] = useState(false)
 
     return (
         <div className={styles.greetingContainer}>
-            <div className={styles.greetingIcon}></div>
-            <p className={styles.greetingText}>{`GOOD ${timeOfTheDay}`}</p><p className="hidden">{`, IT’S CURRENTLY`}</p>
+            <div className={`${styles.greetingIcon} ${timeOfTheDay =='MORNING' ? styles.morning : styles.evening}`}></div>
+            <p className={styles.greetingText}>{`GOOD ${timeOfTheDay}`}</p>
+            {isVisible && <p className={styles.greetingText}>{`, IT’S CURRENTLY`}</p>}
         </div>
     )   
 }

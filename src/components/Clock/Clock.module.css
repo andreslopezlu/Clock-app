@@ -2,12 +2,24 @@
 .main {
     display: flex;
     flex-direction: column;
-    background-image: url('../../assets/mobile/bg-image-daytime.jpg');
     background-size: cover;
     padding-left: 7%;
     padding-right: 7%;
     position: relative;
     padding-top: 32px;
+    max-height: 100vh;
+}
+
+.main.morning {
+    background-image: url('../../assets/mobile/bg-image-daytime.jpg');
+}
+
+.main.evening {
+    background-image: url('../../assets/mobile/bg-image-nighttime.jpg');
+}
+
+.increaseHeader {
+    padding-top: 99px;
 }
 
 .darkDiv {

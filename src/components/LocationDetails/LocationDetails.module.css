@@ -1,3 +1,35 @@
-.locationDetainsContainer {
-    display: none;
+.locationDetailsContainer {
+    background: rgba(255, 255, 255, 0.75);
+    backdrop-filter: blur(20.387113571166992px);
+    padding: 48px 26px 48px 26px;
+    margin-left: -8.2%;
+    margin-right: -8.2%;
+}
+
+.detailItem {
+    display: flex;
+    justify-content: space-between;
+}
+
+.detailName {
+    color: #303030;
+    font-family: Inter;
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 28px; /* 280% */
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    display: inline;
+}
+
+.detailValue {
+    color: #303030;
+    text-align: right;
+    font-family: Inter;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    display: inline;
 }

@@ -3,7 +3,7 @@ import styles from './Quote.module.css'
 
 import useQuotesApi from '../../hooks/useQuotesApi'
 
-const Quote = ({quotesData, getQuotesData}) => {
+const Quote = ({quotesData, getQuotesData, isQuoteVisible}) => {
  
     let quote = quotesData.quote
     let author = quotesData.author
@@ -15,13 +15,18 @@ const Quote = ({quotesData, getQuotesData}) => {
     }
 
     return (
-        <div className={styles.quoteContainer}>
-            <div className={styles.quoteTextContainer}>
-                <p className={styles.text}>"{quote}"</p>
-                <div className={styles.refreshButton} onClick={handleRefreshClick}></div>
-            </div>
-            <p className={styles.quoteAuthor}>{author}</p>
-        </div>
+        <>
+            {   
+                isQuoteVisible && 
+                <div className={styles.quoteContainer}>
+                    <div className={styles.quoteTextContainer}>
+                        <p className={styles.text}>&quot;{quote}&quot;</p>
+                        <div className={styles.refreshButton} onClick={handleRefreshClick}></div>
+                    </div>
+                    <p className={styles.quoteAuthor}>{author}</p>
+                </div>
+            }
+        </>
     )
 }
 
