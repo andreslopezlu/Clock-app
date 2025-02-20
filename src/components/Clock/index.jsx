@@ -79,7 +79,7 @@ const Clock = () => {
 
     return (
         <>  
-            <main className={`${styles.main} ${!isQuoteVisible && styles.increaseHeader} ${timeOfTheDay == 'MORNING' ? styles.morning : styles.evening}`}>
+            <main className={`${styles.main} ${!isQuoteVisible && styles.increaseHeader} ${timeOfTheDay == 'MORNING' ? styles.morning : timeOfTheDay == 'AFTERNOON' ? styles.morning : styles.evening}`}>
                 <div className={styles.darkDiv}></div>
                 <div className={styles.lightDiv}>
                     <Quote quotesData={quotesData} getQuotesData={getQuotesData} isQuoteVisible={isQuoteVisible} className={styles.quote} />
