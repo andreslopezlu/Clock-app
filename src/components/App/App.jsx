@@ -1,16 +1,17 @@
+import { useEffect } from 'react';
+
 import { Outlet } from 'react-router-dom';
 
 import useLocationData from '../../state/useLocationData';
-import { useEffect } from 'react';
 
 import styles from './App.module.css'
 
 function App() {
 
-  const {timeOfTheDay, getData} = useLocationData()
+  const {timeOfTheDay, getLocationData} = useLocationData()
 
   useEffect(() => {
-    getData()
+    getLocationData()
   }, [])
   
   return (

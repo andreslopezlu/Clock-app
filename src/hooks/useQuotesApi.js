@@ -3,7 +3,7 @@ import axios from "axios"
 
 const useQuotesApi = () => {
     const [quotesData, setQuotesData] = useState([])
-    const [quotesIsLoading, setQuotesIsLoading] = useState(true)
+    const [IsQuotesLoading, setQuotesIsLoading] = useState(true)
     const [quotesError, setQuotesError] = useState(false)
 
     const url = `https://api.api-ninjas.com/v1/quotes?X-Api-Key=${import.meta.env.VITE_NINJA_APIS_KEY}`
@@ -21,7 +21,7 @@ const useQuotesApi = () => {
         }
     }
 
-    return {quotesData, quotesIsLoading, quotesError, getQuotesData}
+    return {quotesData, IsQuotesLoading, quotesError, getQuotesData}
 }
 
 export default useQuotesApi

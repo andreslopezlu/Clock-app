@@ -1,5 +1,5 @@
-
 import styles from './Location.module.css'
+
 const Location = ({locationData, handleDetailsButton, isDetailsVisible}) => {
 
     return (

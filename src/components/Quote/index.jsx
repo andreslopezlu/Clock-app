@@ -1,4 +1,3 @@
-
 import styles from './Quote.module.css'
 
 const Quote = ({quotesData, getQuotesData, isQuoteVisible}) => {

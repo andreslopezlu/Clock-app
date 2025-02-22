@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useState } from 'react'
 
 import Quote from '../Quote'
 import Greeting from '../Greeting'
@@ -6,31 +6,25 @@ import Time from '../Time'
 import Location from '../Location'
 import LocationDetails from '../LocationDetails'
 
-import useLocationApi from '../../hooks/useLocationApi'
+import useLocationData from '../../state/useLocationData'
+
 import useQuotesApi from '../../hooks/useQuotesApi'
 import useTimezoneApi from '../../hooks/useTimeZone'
 
-import useLocationData from '../../state/useLocationData'
-
-import stablishTime from '../../utils/stablisTime'
 import stablishTimeZone from '../../utils/stablishTimeZone'
-import stablihTimeOfTheDay from '../../utils/stablishTimeOfTheDay'
 
 import styles from './Clock.module.css'
 
 const Clock = () => {
-    const {quotesData, quotesIsLoading, quotesError, getQuotesData} = useQuotesApi()
-    const {locationData, locationIsLoading, locationError, getLocationData} = useLocationApi()
+    const {quotesData, IsQuotesLoading, quotesError, getQuotesData} = useQuotesApi()
     const {timeZoneData, isTimeZoneLoading, timeZoneError, getTimeZoneData} = useTimezoneApi()
 
-    // const {data, error, isLoading, time, timeOfTheDay, getData} = useLocationData()
+    const {locationData, locationError, isLocationLoading, time, timeOfTheDay, getLocationData} = useLocationData()
 
     const [isDetailsVisible, setIsDetailsVisible] = useState(false)
     const [isQuoteVisible, setIsQuoteVisible] = useState(true)
 
-    const time = stablishTime(locationData) 
     const timeZone = stablishTimeZone(locationData)
-    const timeOfTheDay = stablihTimeOfTheDay(time)
     
     useEffect(() => {
         getQuotesData()
@@ -49,7 +43,7 @@ const Clock = () => {
         setIsQuoteVisible(!isQuoteVisible)
     }
 
-    if(locationIsLoading || quotesIsLoading || isTimeZoneLoading) {
+    if(isLocationLoading || IsQuotesLoading || isTimeZoneLoading) {
         console.log("Cargando");
         return <div>Cargando...</div>   
     }
@@ -61,9 +55,7 @@ const Clock = () => {
 
     return (
         <>  
-            {/* <main className={`${styles.main} ${!isQuoteVisible && styles.increaseHeader} ${timeOfTheDay == 'MORNING' ? styles.morning : timeOfTheDay == 'AFTERNOON' ? styles.morning : styles.evening}`}> */}
             <main className={`${styles.main} ${!isQuoteVisible && styles.increaseHeader}`}>
-                {/* <div className={styles.darkDiv}></div> */}
                 <div className={styles.lightDiv}>
                     <Quote quotesData={quotesData} getQuotesData={getQuotesData} isQuoteVisible={isQuoteVisible} className={styles.quote} />
                     <Greeting time={time} timeOfTheDay={timeOfTheDay} className={styles.greeting} />
