@@ -1,5 +1,4 @@
 import { useState } from "react"
-import stablihTimeOfTheDay from "../../utils/stablishTimeOfTheDay"
 
 import styles from './Greeting.module.css'
 

@@ -10,6 +10,8 @@ import useLocationApi from '../../hooks/useLocationApi'
 import useQuotesApi from '../../hooks/useQuotesApi'
 import useTimezoneApi from '../../hooks/useTimeZone'
 
+import useLocationData from '../../state/useLocationData'
+
 import stablishTime from '../../utils/stablisTime'
 import stablishTimeZone from '../../utils/stablishTimeZone'
 import stablihTimeOfTheDay from '../../utils/stablishTimeOfTheDay'
@@ -21,45 +23,25 @@ const Clock = () => {
     const {locationData, locationIsLoading, locationError, getLocationData} = useLocationApi()
     const {timeZoneData, isTimeZoneLoading, timeZoneError, getTimeZoneData} = useTimezoneApi()
 
+    // const {data, error, isLoading, time, timeOfTheDay, getData} = useLocationData()
+
     const [isDetailsVisible, setIsDetailsVisible] = useState(false)
     const [isQuoteVisible, setIsQuoteVisible] = useState(true)
 
-    
     const time = stablishTime(locationData) 
     const timeZone = stablishTimeZone(locationData)
     const timeOfTheDay = stablihTimeOfTheDay(time)
     
     useEffect(() => {
-        let active = true
-        if (active) {
-            getQuotesData()
-        }
-        console.log("e1")
-        return () => {
-            active = false
-        }
+        getQuotesData()
     }, [])
     
     useEffect(() => {
-        let active = true
-        if (active) {
-            getLocationData()
-        }
-        console.log("e2")
-        return () => {
-            active = false
-        }
+        getLocationData()
     }, [])
     
     useEffect(() => {
-        let active = true
-        if (active) {
-            getTimeZoneData(timeZone)
-        }
-        console.log("e3")
-        return () => {
-            active = false
-        }
+        getTimeZoneData(timeZone)
     }, [])
 
     const handleDetailsButton = () => {
@@ -79,8 +61,9 @@ const Clock = () => {
 
     return (
         <>  
-            <main className={`${styles.main} ${!isQuoteVisible && styles.increaseHeader} ${timeOfTheDay == 'MORNING' ? styles.morning : timeOfTheDay == 'AFTERNOON' ? styles.morning : styles.evening}`}>
-                <div className={styles.darkDiv}></div>
+            {/* <main className={`${styles.main} ${!isQuoteVisible && styles.increaseHeader} ${timeOfTheDay == 'MORNING' ? styles.morning : timeOfTheDay == 'AFTERNOON' ? styles.morning : styles.evening}`}> */}
+            <main className={`${styles.main} ${!isQuoteVisible && styles.increaseHeader}`}>
+                {/* <div className={styles.darkDiv}></div> */}
                 <div className={styles.lightDiv}>
                     <Quote quotesData={quotesData} getQuotesData={getQuotesData} isQuoteVisible={isQuoteVisible} className={styles.quote} />
                     <Greeting time={time} timeOfTheDay={timeOfTheDay} className={styles.greeting} />

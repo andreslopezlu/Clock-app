@@ -1,8 +1,6 @@
 
 import styles from './Quote.module.css'
 
-import useQuotesApi from '../../hooks/useQuotesApi'
-
 const Quote = ({quotesData, getQuotesData, isQuoteVisible}) => {
  
     let quote = quotesData.quote
