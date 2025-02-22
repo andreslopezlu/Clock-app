@@ -16,10 +16,10 @@ import stablishTimeZone from '../../utils/stablishTimeZone'
 import styles from './Clock.module.css'
 
 const Clock = () => {
+    const {locationData, locationError, isLocationLoading, time, timeOfTheDay, getLocationData} = useLocationData()
+
     const {quotesData, IsQuotesLoading, quotesError, getQuotesData} = useQuotesApi()
     const {timeZoneData, isTimeZoneLoading, timeZoneError, getTimeZoneData} = useTimezoneApi()
-
-    const {locationData, locationError, isLocationLoading, time, timeOfTheDay, getLocationData} = useLocationData()
 
     const [isDetailsVisible, setIsDetailsVisible] = useState(false)
     const [isQuoteVisible, setIsQuoteVisible] = useState(true)
@@ -27,11 +27,11 @@ const Clock = () => {
     const timeZone = stablishTimeZone(locationData)
     
     useEffect(() => {
-        getQuotesData()
-    }, [])
-    
-    useEffect(() => {
         getLocationData()
+    }, [])
+
+    useEffect(() => {
+        getQuotesData()
     }, [])
     
     useEffect(() => {
