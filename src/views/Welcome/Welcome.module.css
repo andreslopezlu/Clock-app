@@ -1,0 +1,19 @@
+.welcomeContainer {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+    height: 100%;
+}
+
+.welcomeMessage {
+    color: #f3f3f3;
+    font-family: Inter;
+    font-size: 25px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 100px;
+    opacity: 0.8;
+}

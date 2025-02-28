@@ -45,12 +45,24 @@ const Clock = () => {
 
     if(isLocationLoading || IsQuotesLoading || isTimeZoneLoading) {
         console.log("Cargando");
-        return <div>Cargando...</div>   
+        return (
+            <>
+                <div className={styles.loaderContainer}>
+                    <div className={styles.loader}></div>
+                </div>
+            </>
+        )     
     }
 
     if(locationError || quotesError || timeZoneError) {
         console.error("Error");
-        return <div>Error...</div>
+        return (
+            <>
+                <div className={styles.errorContainer}>
+                    <p className={styles.error}>An error has occurred</p>
+                </div>
+            </>
+        )   
     }
 
     return (

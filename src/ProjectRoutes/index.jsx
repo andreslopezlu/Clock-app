@@ -3,7 +3,7 @@ import { createRoutesFromElements } from 'react-router';
 
 import App from '../components/App/App'
 import Home from '../views/Home'
-import Welcome from '../views/welcome'
+import Welcome from '../views/Welcome'
 import Profile from '../views/profile'
 import ErrorPage from '../views/ErrorPage'
 
