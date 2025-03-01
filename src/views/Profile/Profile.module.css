@@ -1,0 +1,67 @@
+.favorites {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    z-index: 1;
+    align-items: center;
+    padding-top: 48px;
+    padding-bottom: 48px;
+    /* justify-content: space-around; */
+    height: 100vh;
+}
+
+.findCountry {
+    height: 36px;
+    padding-left: 16px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    width: 70%;
+    background-color: white;
+    border-radius: 20px;
+    color: #000;
+    font-family: Inter;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 700;
+    margin-bottom: 48px;
+}
+
+.countriesList {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    margin-left: 48px;
+}
+
+.myFavorites, .countries {
+    color: #FFF;
+    font-family: Inter;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 28px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+}
+
+.locationText {
+    color: #FFF;
+    font-family: Inter;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 28px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+}
+
+.myFavoritesList {
+    margin-bottom: 24px;
+}
+
+.myFavoritesList, .allCountriesList {
+    margin-left: 24px;
+}

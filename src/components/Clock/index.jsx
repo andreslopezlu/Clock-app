@@ -73,7 +73,7 @@ const Clock = () => {
                     <Greeting time={time} timeOfTheDay={timeOfTheDay} className={styles.greeting} />
                     <Time time={time} className={styles.time} />
                     <Location locationData={locationData} handleDetailsButton={handleDetailsButton} isDetailsVisible={isDetailsVisible} className={styles.location} />
-                    <LocationDetails timeZoneData={timeZoneData} timeZone={timeZone} isDetailsVisible={isDetailsVisible} className={styles.locationDetails} />
+                    <LocationDetails timeZoneData={timeZoneData} timeZone={timeZone} isDetailsVisible={isDetailsVisible} timeOfTheDay={timeOfTheDay} className={styles.locationDetails} />
                 </div>
             </main>
         </>

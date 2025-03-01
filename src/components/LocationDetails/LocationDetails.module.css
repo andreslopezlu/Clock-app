@@ -33,3 +33,28 @@
     line-height: normal;
     display: inline;
 }
+
+.lastValue {
+    margin-bottom: 24px;
+}
+
+.favoritesButton {
+    font-family: Inter;
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 900;
+    line-height: 28px; /* 280% */
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    display: inline;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.dark {
+    color: rgb(85, 85, 164);
+}
+
+.light {
+    color: rgb(48, 100, 59);
+}
