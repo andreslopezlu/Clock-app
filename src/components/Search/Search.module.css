@@ -1,0 +1,14 @@
+.findCity {
+    height: 36px;
+    padding-left: 16px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    width: 70%;
+    background-color: white;
+    border-radius: 20px;
+    color: #000;
+    font-family: Inter;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 700;
+}

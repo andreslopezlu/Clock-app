@@ -1,20 +1,22 @@
-import { useState } from 'react'
+import Search from '../../components/Search'
+import Cities from '../../components/Cities/Cities'
+
+import useCitiesApi from '../../hooks/useCitiesApi'
+
 import styles from './Profile.module.css'
 
 const Profile = () => {
-    const [searchedCountry, setSearchedCountry] = useState('')
+    const {citiesData, citiesIsLoading, citiesError, getCitiesData} = useCitiesApi()
 
-    const handleFindCountry = (e) => {
-        setSearchedCountry(e.target.value)
+    const handleSearchCity = (value) => {
+        getCitiesData(value)
     }
-    
-    console.log(searchedCountry)
 
     return (
         <>
             <div className={styles.favorites}>
-                <input type="text" onChange={handleFindCountry} value={searchedCountry} placeholder='Find a country' className={styles.findCountry}/>
-                <div className={styles.countriesList}>
+                <Search onSearchCity={handleSearchCity}/>
+                <div className={styles.citiesList}>
                     <p className={styles.myFavorites}>Your favorites:</p>
                     <div className={styles.myFavoritesList}>
                         <ul>
@@ -23,15 +25,10 @@ const Profile = () => {
                             <li className={styles.locationText}>Argentina</li>
                         </ul>
                     </div>
-                    <p className={styles.countries}>Countries:</p>
-                    <div className={styles.allCountriesList}>
+                    <p className={styles.cities}>Cities:</p>
+                    <div className={styles.allCitiesList}>
                         <ul>
-                            <li className={styles.locationText}>Colombia</li>
-                            <li className={styles.locationText}>US</li>
-                            <li className={styles.locationText}>Argentina</li>
-                            <li className={styles.locationText}>Colombia</li>
-                            <li className={styles.locationText}>US</li>
-                            <li className={styles.locationText}>Argentina</li>
+                            <Cities citiesData={citiesData} />
                         </ul>
                     </div>
                 </div>
