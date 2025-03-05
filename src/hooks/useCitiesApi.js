@@ -26,7 +26,6 @@ const useCitiesApi = () => {
             const data = response.data
             setCitiesData(data)
             setCitiesIsLoading(false)
-            console.log(data)
         } catch(error) {
             setCitiesError(error)
         }

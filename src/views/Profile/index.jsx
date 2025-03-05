@@ -20,8 +20,6 @@ const Profile = () => {
 
     const pageCount = Math.ceil(totalResults/itemsPerPage) || 0
 
-    console.log(pageCount)
-
     const handleSearchCity = (value) => {
         if (searchValue.current === value) {
             return  
