@@ -1,12 +1,12 @@
-import ReactPaginate from 'react-paginate'
+import { useRef, useState } from 'react'
 
+import ReactPaginate from 'react-paginate'
 import Search from '../../components/Search'
-import Cities from '../../components/Cities/Cities'
+import Cities from '../../components/Cities'
 
 import useCitiesApi from '../../hooks/useCitiesApi'
 
 import styles from './Profile.module.css'
-import { useRef, useState } from 'react'
 
 const Profile = () => {
     const {citiesData, citiesIsLoading, citiesError, getCitiesData} = useCitiesApi()
@@ -57,22 +57,22 @@ const Profile = () => {
                 </div>
                 {pageCount > 0 &&
                     <ReactPaginate
-                                className={styles.pagination}
-                                nextClassName={styles.next}
-                                previousClassName={styles.previous}
-                                pageClassName={styles.page}
-                                breakClassName={styles.break}
-                                activeClassName={styles.active}
-                                disabledClassName={styles.disabled}
-                                breakLabel="..."
-                                nextLabel=">"
-                                onPageChange={handlePageClick}
-                                pageRangeDisplayed={1}
-                                marginPagesDisplayed={1}
-                                pageCount={pageCount}
-                                previousLabel="<"
-                                renderOnZeroPageCount={null}
-                                forcePage={currentPage}
+                        className={styles.pagination}
+                        nextClassName={styles.next}
+                        previousClassName={styles.previous}
+                        pageClassName={styles.page}
+                        breakClassName={styles.break}
+                        activeClassName={styles.active}
+                        disabledClassName={styles.disabled}
+                        breakLabel="..."
+                        nextLabel=">"
+                        onPageChange={handlePageClick}
+                        pageRangeDisplayed={1}
+                        marginPagesDisplayed={1}
+                        pageCount={pageCount}
+                        previousLabel="<"
+                        renderOnZeroPageCount={null}
+                        forcePage={currentPage}
                     />
                 }
             </div>
