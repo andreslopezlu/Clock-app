@@ -11,7 +11,11 @@ const Search = ({onSearchCity}) => {
     
     const handleEnterKeyDown = (e) => {
         if(e.key === 'Enter') {
-            onSearchCity(searchedCity)
+            if (searchedCity.length === 0) {
+                return
+            } else {
+                onSearchCity(searchedCity)
+            }
         }
     }
 

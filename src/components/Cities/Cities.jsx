@@ -12,7 +12,11 @@ const Cities = ({citiesData}) => {
             <City key={id} city={city} country={country}/>
         )
     }) 
-    return result
+    return (
+        <ul>
+            {result}
+        </ul>
+    )
 }
 
 export default Cities

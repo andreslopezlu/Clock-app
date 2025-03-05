@@ -6,17 +6,18 @@ const useCitiesApi = () => {
     const [citiesIsLoading, setCitiesIsLoading] = useState(true)
     const [citiesError, setCitiesError] = useState(false)
 
-    async function getCitiesData(name) {
+    async function getCitiesData(name, offset=0) {
 
         const options = {
             method: 'GET',
             url: 'https://wft-geo-db.p.rapidapi.com/v1/geo/cities',
             params: {
-                namePrefix: name
+                namePrefix: name,
+                offset: offset
             },
             headers: {
                 'x-rapidapi-key': `${import.meta.env.VITE_RAPIDAPI_KEY}`,
-                'x-rapidapi-host': 'wft-geo-db.p.rapidapi.com'
+                'x-rapidapi-host': 'wft-geo-db.p.rapidapi.com',
             },
             timeout: 5000
         }
@@ -25,6 +26,7 @@ const useCitiesApi = () => {
             const data = response.data
             setCitiesData(data)
             setCitiesIsLoading(false)
+            console.log(data)
         } catch(error) {
             setCitiesError(error)
         }

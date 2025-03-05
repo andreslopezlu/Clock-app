@@ -36,3 +36,65 @@
 .myFavoritesList, .allCitiesList {
     margin-left: 24px;
 }
+
+.locationText {
+    color: #FFF;
+    font-family: Inter;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 28px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+}
+
+.pagination {
+    list-style-type: none;
+    display: flex;
+    justify-content: center;
+    background-color: gray;
+    padding: 12px;
+    border-radius: 8px;
+    align-items: center;
+    opacity: 0.9;
+    position: relative;
+    z-index: -1;
+}
+
+.page, .break {
+    padding: 0 8px;
+    font-size: 15px;
+}
+
+.page, .next, .previous, .break {
+    color: #FFF;
+    font-family: Inter;
+    cursor: pointer;
+    font-weight: 700;
+}
+
+.page:hover, .next:hover, .previous:hover, .break:hover {
+    color: rgb(56, 23, 97);
+}
+
+.previous {
+    font-size: 18px;
+    margin-right: 8px;
+}
+
+.next {
+    font-size: 18px;
+    margin-left: 8px;
+}
+
+.active {
+    background-color: rgb(209, 201, 201);
+    padding: 4px;
+    border-radius: 20px;
+    color: rgb(56, 23, 97);
+}
+
+.disabled {
+    cursor: not-allowed;
+}

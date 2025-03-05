@@ -1,6 +1,6 @@
-import styles from './Country.module.css'
+import styles from './City.module.css'
 
-const City = ({city, country, flag}) => {
+const City = ({city, country}) => {
     return (
         <li className={styles.locationText}>{`${city}, ${country}`}</li>
     )
