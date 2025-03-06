@@ -39,7 +39,7 @@
 }
 
 .moreButton {
-    background-image: url('../../assets/icons/more.svg');
+    background-image: url('../../../../assets/icons/more.svg');
     background-repeat: no-repeat;
     background-size: contain;
     width: 32px;

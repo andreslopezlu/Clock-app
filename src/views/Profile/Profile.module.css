@@ -35,6 +35,7 @@
 
 .myFavoritesList, .allCitiesList {
     margin-left: 24px;
+    width: 75%;
 }
 
 .locationText {

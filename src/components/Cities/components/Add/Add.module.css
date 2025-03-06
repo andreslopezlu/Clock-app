@@ -1,0 +1,13 @@
+.addFavorite:hover {
+    transform: scale(1.2); 
+}
+
+.addFavorite path {
+    cursor: pointer;
+    transition: transform 0.3s ease, fill 0.3s ease; 
+    fill: white;
+}
+
+.addFavorite path:hover {
+    fill: rgb(49, 196, 49);
+}

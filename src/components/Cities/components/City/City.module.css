@@ -9,3 +9,11 @@
     text-transform: uppercase;
     margin-bottom: 16px;
 }
+
+.cityContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+}
+

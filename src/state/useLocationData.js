@@ -5,8 +5,8 @@ import stablihTimeOfTheDay from "../utils/stablishTimeOfTheDay";
 
 const useLocationData = create((set, get) => ({
     locationData: null,
-    locationError: null,
     isLocationLoading: true,
+    locationError: null,
     time: null,
     timeOfTheDay: null,
     getLocationData: async () => {

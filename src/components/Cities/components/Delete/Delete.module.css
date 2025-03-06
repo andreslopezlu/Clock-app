@@ -1,0 +1,13 @@
+.deleteFavorite:hover {
+    transform: scale(1.2); 
+}
+
+.deleteFavorite path {
+    cursor: pointer;
+    transition: transform 0.3s ease, fill 0.3s ease; 
+    fill: white;
+}
+
+.deleteFavorite path:hover {
+    fill: rgb(255, 0, 0);
+}

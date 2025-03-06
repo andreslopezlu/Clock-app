@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react'
 
-import Quote from '../Quote'
-import Greeting from '../Greeting'
-import Time from '../Time'
-import Location from '../Location'
-import LocationDetails from '../LocationDetails'
+import Quote from './components/Quote'
+import Greeting from './components/Greeting'
+import Time from './components/Time'
+import Location from './components/Location'
+import LocationDetails from './components/LocationDetails'
 
 import useLocationData from '../../state/useLocationData'
 
