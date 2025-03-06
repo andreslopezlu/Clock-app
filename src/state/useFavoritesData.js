@@ -18,14 +18,14 @@ const useFavoritesData = create((set, get) => {
             const favorites = JSON.parse(localStorage.getItem(FAVORITES_LOCAL_STORAGE))
             const favoriteIndex = favorites.indexOf(id)
             favorites.includes(id) ? favorites.splice(favoriteIndex, 1) : favorites.push(id)
+            const total = favorites.length
             localStorage.setItem(FAVORITES_LOCAL_STORAGE, JSON.stringify(favorites));
-            set((state) => ({
+            set(() => ({
                 favoritesData: favorites,
-                totalFavorites: state.favoritesData.length
+                totalFavorites: total
             }))
         }
     }
-
 })
 
 export default useFavoritesData

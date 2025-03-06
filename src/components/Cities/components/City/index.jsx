@@ -9,7 +9,7 @@ import { useState } from 'react'
 
 const City = ({id, city, country}) => {
 
-    const {favoritesData, saveDeleteFavorites} = useFavoritesData()
+    const {favoritesData, saveDeleteFavorites, totalFavorites} = useFavoritesData()
 
     const [isFavorite, setIsFavorite] = useState(favoritesData.includes(id)) 
 
@@ -22,7 +22,9 @@ const City = ({id, city, country}) => {
             <div className={styles.cityContainer}>
                 <li className={styles.locationText}>{`${city}, ${country}`}</li>
                 <div className={styles.favoriteButton}>
-                    {isFavorite ? <Delete id={id} saveDeleteFavorites={saveDeleteFavorites} toggleFavorite={toggleFavorite} /> : <Add id={id} saveDeleteFavorites={saveDeleteFavorites} toggleFavorite={toggleFavorite} />}
+                    {isFavorite ? <Delete id={id} saveDeleteFavorites={saveDeleteFavorites} toggleFavorite={toggleFavorite} /> : 
+                    !isFavorite && totalFavorites < 3 ? <Add id={id} saveDeleteFavorites={saveDeleteFavorites} toggleFavorite={toggleFavorite} /> : 
+                    null}
                 </div>
             </div>
         </>
