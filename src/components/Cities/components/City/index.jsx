@@ -1,13 +1,13 @@
+import { useState } from 'react'
+
 import Add from '../Add'
 import Delete from '../Delete'
 
-import styles from './City.module.css'
-
 import useFavoritesData from '../../../../state/useFavoritesData'
 
-import { useState } from 'react'
-
 import { FAVORITES_LIMIT } from '../../../../utils/constants'
+
+import styles from './City.module.css'
 
 const City = ({id, city, country}) => {
 

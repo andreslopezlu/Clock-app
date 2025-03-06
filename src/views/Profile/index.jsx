@@ -1,6 +1,7 @@
 import { useRef, useState } from 'react'
 
 import ReactPaginate from 'react-paginate'
+
 import Search from '../../components/Search'
 import Cities from '../../components/Cities'
 
