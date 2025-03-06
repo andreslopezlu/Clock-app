@@ -1,33 +1,28 @@
 import Add from '../Add'
 import Delete from '../Delete'
-import { useEffect, useState } from 'react'
-
-import { FAVORITES_LOCAL_STORAGE } from "../../../../utils/constants"
 
 import styles from './City.module.css'
 
-const City = ({id, city, country, handleFavoriteButton}) => {
+import useFavoritesData from '../../../../state/useFavoritesData'
 
-    const [isFavorite, setIsFavorite] = useState(false)
+import { useState } from 'react'
 
-    const isCityFavorite = (id) => {
-        const favorites = JSON.parse(localStorage.getItem(FAVORITES_LOCAL_STORAGE)) || []
-        setIsFavorite(favorites.includes(id))
+const City = ({id, city, country}) => {
+
+    const {favoritesData, saveDeleteFavorites} = useFavoritesData()
+
+    const [isFavorite, setIsFavorite] = useState(favoritesData.includes(id)) 
+
+    const toggleFavorite = (id) => {
+        setIsFavorite(!favoritesData.includes(id))
     }
-
-    useEffect(() => {
-        isCityFavorite(id)
-    }, [])
 
     return (
         <>
             <div className={styles.cityContainer}>
                 <li className={styles.locationText}>{`${city}, ${country}`}</li>
-                <div className={styles.favoriteButton} onClick={() => {
-                    handleFavoriteButton(id)
-                    isCityFavorite(id)
-                }}>
-                    {isFavorite ? <Delete /> : <Add />}
+                <div className={styles.favoriteButton}>
+                    {isFavorite ? <Delete id={id} saveDeleteFavorites={saveDeleteFavorites} toggleFavorite={toggleFavorite} /> : <Add id={id} saveDeleteFavorites={saveDeleteFavorites} toggleFavorite={toggleFavorite} />}
                 </div>
             </div>
         </>

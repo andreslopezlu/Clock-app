@@ -1,11 +1,11 @@
-
 import { create } from "zustand"
 
 import { FAVORITES_LOCAL_STORAGE } from "../utils/constants"
 
 const useFavoritesData = create((set, get) => {
 
-    const initialFavorites = []
+    const initialFavorites = JSON.parse(localStorage.getItem(FAVORITES_LOCAL_STORAGE)) || []
+    const initialTotal = initialFavorites.length
 
     if(!localStorage.getItem(FAVORITES_LOCAL_STORAGE)) {
         localStorage.setItem(FAVORITES_LOCAL_STORAGE, JSON.stringify([]))
@@ -13,18 +13,15 @@ const useFavoritesData = create((set, get) => {
 
     return {
         favoritesData: initialFavorites,
-        toggleFavorites: (id) => {
-
+        totalFavorites: initialTotal,
+        saveDeleteFavorites: (id) => {
             const favorites = JSON.parse(localStorage.getItem(FAVORITES_LOCAL_STORAGE))
-    
-            const favIndex = favorites.indexOf(id)
-            
-            favorites.includes(id) ? favorites.splice(favIndex, 1) : favorites.push(id)
-    
+            const favoriteIndex = favorites.indexOf(id)
+            favorites.includes(id) ? favorites.splice(favoriteIndex, 1) : favorites.push(id)
             localStorage.setItem(FAVORITES_LOCAL_STORAGE, JSON.stringify(favorites));
-    
-            set(() => ({
-                favoritesData: favorites
+            set((state) => ({
+                favoritesData: favorites,
+                totalFavorites: state.favoritesData.length
             }))
         }
     }

@@ -11,3 +11,7 @@
 .addFavorite path:hover {
     fill: rgb(49, 196, 49);
 }
+
+.notAllowed {
+    cursor: not-allowed;
+}
