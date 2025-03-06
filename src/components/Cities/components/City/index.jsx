@@ -7,6 +7,8 @@ import useFavoritesData from '../../../../state/useFavoritesData'
 
 import { useState } from 'react'
 
+import { FAVORITES_LIMIT } from '../../../../utils/constants'
+
 const City = ({id, city, country}) => {
 
     const {favoritesData, saveDeleteFavorites, totalFavorites} = useFavoritesData()
@@ -23,7 +25,7 @@ const City = ({id, city, country}) => {
                 <li className={styles.locationText}>{`${city}, ${country}`}</li>
                 <div className={styles.favoriteButton}>
                     {isFavorite ? <Delete id={id} saveDeleteFavorites={saveDeleteFavorites} toggleFavorite={toggleFavorite} /> : 
-                    !isFavorite && totalFavorites < 3 ? <Add id={id} saveDeleteFavorites={saveDeleteFavorites} toggleFavorite={toggleFavorite} /> : 
+                    !isFavorite && totalFavorites < FAVORITES_LIMIT ? <Add id={id} saveDeleteFavorites={saveDeleteFavorites} toggleFavorite={toggleFavorite} /> : 
                     null}
                 </div>
             </div>
