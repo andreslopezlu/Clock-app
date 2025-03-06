@@ -12,7 +12,6 @@ import styles from './City.module.css'
 const City = ({id, city, country}) => {
 
     const {favoritesData, saveDeleteFavorites, totalFavorites} = useFavoritesData()
-
     const [isFavorite, setIsFavorite] = useState(favoritesData.includes(id)) 
 
     const toggleFavorite = (id) => {

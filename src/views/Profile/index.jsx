@@ -11,9 +11,9 @@ import styles from './Profile.module.css'
 
 const Profile = () => {
     const {citiesData, citiesIsLoading, citiesError, getCitiesData} = useCitiesApi()
+    const [currentPage, setCurrentPage] = useState(0);
     const searchValue = useRef('')
     const startValue = useRef(0)
-    const [currentPage, setCurrentPage] = useState(0);
 
     const totalResults = citiesData?.metadata?.totalCount || 0
 
