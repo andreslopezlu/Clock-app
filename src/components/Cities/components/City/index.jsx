@@ -1,7 +1,7 @@
 import { useState } from 'react'
 
-import Add from '../Add'
-import Delete from '../Delete'
+import Add from './components/Add'
+import Delete from './components/Delete'
 
 import useFavoritesData from '../../../../state/useFavoritesData'
 
@@ -13,6 +13,7 @@ const City = ({id, city, country}) => {
 
     const {favoritesData, saveDeleteFavorites, totalFavorites} = useFavoritesData()
     const [isFavorite, setIsFavorite] = useState(favoritesData.includes(id)) 
+
 
     const toggleFavorite = (id) => {
         setIsFavorite(!favoritesData.includes(id))

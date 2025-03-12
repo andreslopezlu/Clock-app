@@ -4,13 +4,16 @@ import ReactPaginate from 'react-paginate'
 
 import Search from '../../components/Search'
 import Cities from '../../components/Cities'
+import Favorites from '../../components/Favorites'
 
 import useCitiesApi from '../../hooks/useCitiesApi'
+import useFavoritesData from '../../state/useFavoritesData'
 
 import styles from './Profile.module.css'
 
 const Profile = () => {
     const {citiesData, citiesIsLoading, citiesError, getCitiesData} = useCitiesApi()
+    const {favoritesData, saveDeleteFavorites, totalFavorites} = useFavoritesData()
     const [currentPage, setCurrentPage] = useState(0);
     const searchValue = useRef('')
     const startValue = useRef(0)
@@ -45,11 +48,7 @@ const Profile = () => {
                 <div className={styles.citiesList}>
                     <p className={styles.myFavorites}>Your favorites:</p>
                     <div className={styles.myFavoritesList}>
-                        <ul>
-                            <li className={styles.locationText}>Colombia</li>
-                            <li className={styles.locationText}>US</li>
-                            <li className={styles.locationText}>Argentina</li>
-                        </ul>
+                        <Favorites favoritesData={favoritesData} />
                     </div>
                     <p className={styles.cities}>Cities:</p>
                     <div className={styles.allCitiesList}>
