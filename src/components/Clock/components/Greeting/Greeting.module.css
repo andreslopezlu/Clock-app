@@ -14,11 +14,11 @@
 }
 
 .greetingIcon.morning {
-    background-image: url('../../assets/icons/day.svg');
+    background-image: url('../../../../assets/icons/day.svg');
 }
 
 .greetingIcon.evening {
-    background-image: url('../../assets/icons/night.svg');
+    background-image: url('../../../../assets/icons/night.svg');
 }
 
 .greetingText {
