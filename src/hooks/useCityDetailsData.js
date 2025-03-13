@@ -19,7 +19,10 @@ const useCityDetailsData = () => {
             }, time);
             time += 1500
         }
-        setData(result)
+
+        setTimeout(() => {
+            setData(result)
+        }, 2500)
     }
     return {data, fetchData}
 }
