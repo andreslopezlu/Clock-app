@@ -7,13 +7,13 @@ import Cities from '../../components/Cities'
 import Favorites from '../../components/Favorites'
 
 import useCitiesApi from '../../hooks/useCitiesApi'
-import useFavoritesData from '../../state/useFavoritesData'
+import useFavoritesIds from '../../state/useFavoritesIds'
 
 import styles from './Profile.module.css'
 
 const Profile = () => {
     const {citiesData, citiesIsLoading, citiesError, getCitiesData} = useCitiesApi()
-    const {favoritesData, saveDeleteFavorites, totalFavorites} = useFavoritesData()
+    const {favoritesData, saveDeleteFavorites, totalFavorites} = useFavoritesIds()
     const [currentPage, setCurrentPage] = useState(0);
     const searchValue = useRef('')
     const startValue = useRef(0)

@@ -2,7 +2,7 @@ import { create } from "zustand"
 
 import { FAVORITES_LOCAL_STORAGE } from "../utils/constants"
 
-const useFavoritesData = create((set, get) => {
+const useFavoritesIds = create((set, get) => {
 
     const initialFavorites = JSON.parse(localStorage.getItem(FAVORITES_LOCAL_STORAGE)) || []
     const initialTotal = initialFavorites.length
@@ -28,4 +28,4 @@ const useFavoritesData = create((set, get) => {
     }
 })
 
-export default useFavoritesData
+export default useFavoritesIds

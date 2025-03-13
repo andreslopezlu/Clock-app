@@ -1,6 +1,6 @@
 import axios from "axios"
 
-const useCityDetailsApi = () => {
+const fetchCityDetailsApi = () => {
 
     async function getCityDetailData(id) {
 
@@ -25,4 +25,4 @@ const useCityDetailsApi = () => {
     return {getCityDetailData}
 }
 
-export default useCityDetailsApi
+export default fetchCityDetailsApi

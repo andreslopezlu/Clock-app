@@ -1,10 +1,10 @@
 import { useState } from "react";
 
-import useCityDetailsApi from "./useCityDetailsApi";
+import fetchCityDetailsApi from "../utils/fetchCityDetailsApi";
 
 const useCityDetailsData = () => {
     const [data, setData] = useState([])
-    const {getCityDetailData} = useCityDetailsApi()
+    const {getCityDetailData} = fetchCityDetailsApi()
 
     function fetchData(ids) {
         let time = 0

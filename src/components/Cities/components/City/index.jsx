@@ -3,7 +3,7 @@ import { useState } from 'react'
 import Add from './components/Add'
 import Delete from './components/Delete'
 
-import useFavoritesData from '../../../../state/useFavoritesData'
+import useFavoritesData from '../../../../state/useFavoritesIds'
 
 import { FAVORITES_LIMIT } from '../../../../utils/constants'
 
