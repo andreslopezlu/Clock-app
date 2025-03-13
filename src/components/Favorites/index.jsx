@@ -9,7 +9,9 @@ const Favorites = ({favoritesData}) => {
     const {data, fetchData} = useCityDetailsData()
 
     useEffect(() => {
-        fetchData(favoritesData)
+        setTimeout(() => {
+            fetchData(favoritesData)
+        }, 5000)
     }, [favoritesData]);
     
     console.log('resultado', data)
