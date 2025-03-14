@@ -1,0 +1,14 @@
+.totalFavorites {
+    color: rgb(48, 100, 59);
+    font-family: Inter;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 28px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+    background-color: rgba(255, 255, 255, 0.75);
+    text-align: center;
+    border-radius: 8px;
+}

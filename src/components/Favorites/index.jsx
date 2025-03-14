@@ -1,8 +1,12 @@
-import City from '../Cities/components/City'
+import { useEffect } from 'react';
+
+import Favorite from './components/Favorite';
 
 import useFavorites from '../../state/useFavorites';
 
-import { useEffect } from 'react';
+import { FAVORITES_LIMIT } from '../../utils/constants';
+
+import styles from './Favorites.module.css'
 
 const Favorites = () => {
 
@@ -19,14 +23,17 @@ const Favorites = () => {
         const city = item.data.city
         const country = item.data.countryCode
         return (
-            <City key={id} id={id} city={city} country={country} />
+            <Favorite key={id} id={id} city={city} country={country} favoritesIds={favoritesIds} saveDeleteFavoritesIds={saveDeleteFavoritesIds} saveDeleteFavoritesData={saveDeleteFavoritesData}/>
         )
     }) 
     
     return (
-        <ul>
-            {renderFavorites}
-        </ul>
+        <>
+            <p className={styles.totalFavorites}>{`You have ${totalFavorites} of ${FAVORITES_LIMIT} favorites`}</p>
+            <ul>
+                {renderFavorites}
+            </ul>
+        </>
     )
 }
 
