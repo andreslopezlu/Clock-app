@@ -1,8 +1,12 @@
+import { useEffect } from 'react';
+
 import Favorite from './components/Favorite';
 
 import useFavorites from '../../state/useFavorites';
 
-import { useEffect } from 'react';
+import { FAVORITES_LIMIT } from '../../utils/constants';
+
+import styles from './Favorites.module.css'
 
 const Favorites = () => {
 
@@ -24,9 +28,12 @@ const Favorites = () => {
     }) 
     
     return (
-        <ul>
-            {renderFavorites}
-        </ul>
+        <>
+            <p className={styles.totalFavorites}>{`You have ${totalFavorites} of ${FAVORITES_LIMIT} favorites`}</p>
+            <ul>
+                {renderFavorites}
+            </ul>
+        </>
     )
 }
 

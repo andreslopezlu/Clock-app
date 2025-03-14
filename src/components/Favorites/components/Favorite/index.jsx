@@ -4,11 +4,11 @@ import Delete from './components/Delete'
 
 import useFavorites from '../../../../state/useFavorites'
 
-import { FAVORITES_LIMIT } from '../../../../utils/constants'
-
 import styles from './Favorite.module.css'
 
-const Favorite = ({id, city, country, favoritesIds, saveDeleteFavoritesIds, saveDeleteFavoritesData}) => {
+const Favorite = ({id, city, country}) => {
+
+    const {favoritesIds, totalFavorites, favoritesData, saveDeleteFavoritesIds, saveDeleteFavoritesData, getFavoritesData} = useFavorites()
 
     const [isFavorite, setIsFavorite] = useState(favoritesIds.includes(id)) 
 
