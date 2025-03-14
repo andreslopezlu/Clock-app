@@ -1,10 +1,11 @@
 import styles from './Add.module.css'
 
-const Add = ({id, saveDeleteFavorites, toggleFavorite}) => {
+const Add = ({id, saveDeleteFavoritesIds, saveDeleteFavoritesData, toggleFavorite}) => {
 
     const handleAdd = () => {
-        saveDeleteFavorites(id)
         toggleFavorite(id)
+        saveDeleteFavoritesIds(id)
+        saveDeleteFavoritesData()
     }
 
     return (
