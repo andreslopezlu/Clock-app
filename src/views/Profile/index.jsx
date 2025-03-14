@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react'
+import { useRef, useState, useEffect } from 'react'
 
 import ReactPaginate from 'react-paginate'
 
@@ -9,14 +9,21 @@ import Favorites from '../../components/Favorites'
 import useCitiesApi from '../../hooks/useCitiesApi'
 import useFavoritesIds from '../../state/useFavoritesIds'
 
+import useCityDetailsData from '../../hooks/useCityDetailsData'
+
 import styles from './Profile.module.css'
 
 const Profile = () => {
     const {citiesData, citiesIsLoading, citiesError, getCitiesData} = useCitiesApi()
-    const {favoritesData, saveDeleteFavorites, totalFavorites} = useFavoritesIds()
+    const {favoritesIds, saveDeleteFavorites, totalFavorites} = useFavoritesIds()
+    const {favoritesData, fetchFavoritesData} = useCityDetailsData()
     const [currentPage, setCurrentPage] = useState(0);
     const searchValue = useRef('')
     const startValue = useRef(0)
+
+    useEffect(() => {   
+        fetchFavoritesData(favoritesIds)
+    }, [favoritesIds]);
 
     const totalResults = citiesData?.metadata?.totalCount || 0
 

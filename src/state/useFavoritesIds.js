@@ -12,7 +12,7 @@ const useFavoritesIds = create((set, get) => {
     }
 
     return {
-        favoritesData: initialFavorites,
+        favoritesIds: initialFavorites,
         totalFavorites: initialTotal,
         saveDeleteFavorites: (id) => {
             const favorites = JSON.parse(localStorage.getItem(FAVORITES_IDS_LOCAL_STORAGE))
@@ -21,7 +21,7 @@ const useFavoritesIds = create((set, get) => {
             const total = favorites.length
             localStorage.setItem(FAVORITES_IDS_LOCAL_STORAGE, JSON.stringify(favorites));
             set(() => ({
-                favoritesData: favorites,
+                favoritesIds: favorites,
                 totalFavorites: total
             }))
         }

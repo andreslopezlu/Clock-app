@@ -2,29 +2,41 @@ import { useState } from "react";
 
 import fetchCityDetailsApi from "../utils/fetchCityDetailsApi";
 
-const useCityDetailsData = () => {
-    const [data, setData] = useState([])
-    const {getCityDetailData} = fetchCityDetailsApi()
+import { FAVORITES_DATA_LOCAL_STORAGE } from "../utils/constants";
 
-    function fetchData(ids) {
-        let time = 0
+const useCityDetailsData = () => {
+    const [favoritesData, setFavoritesData] = useState([])
+    const {getCityDetailData} = fetchCityDetailsApi()
+    const delay = 2000
+
+    async function fetchFavoritesData(ids) {
         let result = []
-        
+
         for (const i in ids){
-            setTimeout(() => {
-                const item = getCityDetailData(ids[i])
-                item.then((response) => {
-                    result.push(response.data)
-                })
-            }, time);
-            time += 1500
+            await new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    const completed = true
+                    completed ? resolve('ok') : reject('no')
+                }, delay)
+            })
+            try {
+                const item = await getCityDetailData(ids[i])  
+                result.push(item)
+            } catch(error) {
+                console.error(error)
+            }
         }
 
-        setTimeout(() => {
-            setData(result)
-        }, 2500)
+        localStorage.setItem(FAVORITES_DATA_LOCAL_STORAGE, JSON.stringify(result));
+        setFavoritesData(result)
     }
-    return {data, fetchData}
+
+    function getFavorites() {
+        const favorites = JSON.parse(localStorage.getItem(FAVORITES_DATA_LOCAL_STORAGE)) || []
+        return favorites
+    }
+
+    return {favoritesData, fetchFavoritesData, getFavorites}
 }
 
 export default useCityDetailsData

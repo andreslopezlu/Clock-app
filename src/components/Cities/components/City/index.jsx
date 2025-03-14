@@ -3,7 +3,7 @@ import { useState } from 'react'
 import Add from './components/Add'
 import Delete from './components/Delete'
 
-import useFavoritesData from '../../../../state/useFavoritesIds'
+import useFavoritesIds from '../../../../state/useFavoritesIds'
 
 import { FAVORITES_LIMIT } from '../../../../utils/constants'
 
@@ -11,12 +11,11 @@ import styles from './City.module.css'
 
 const City = ({id, city, country}) => {
 
-    const {favoritesData, saveDeleteFavorites, totalFavorites} = useFavoritesData()
-    const [isFavorite, setIsFavorite] = useState(favoritesData.includes(id)) 
-
+    const {favoritesIds, saveDeleteFavorites, totalFavorites} = useFavoritesIds()
+    const [isFavorite, setIsFavorite] = useState(favoritesIds.includes(id)) 
 
     const toggleFavorite = (id) => {
-        setIsFavorite(!favoritesData.includes(id))
+        setIsFavorite(!favoritesIds.includes(id))
     }
 
     return (
