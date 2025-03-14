@@ -1,4 +1,4 @@
-import City from '../Cities/components/City'
+import Favorite from './components/Favorite';
 
 import useFavorites from '../../state/useFavorites';
 
@@ -19,7 +19,7 @@ const Favorites = () => {
         const city = item.data.city
         const country = item.data.countryCode
         return (
-            <City key={id} id={id} city={city} country={country} />
+            <Favorite key={id} id={id} city={city} country={country} favoritesIds={favoritesIds} saveDeleteFavoritesIds={saveDeleteFavoritesIds} saveDeleteFavoritesData={saveDeleteFavoritesData}/>
         )
     }) 
     
