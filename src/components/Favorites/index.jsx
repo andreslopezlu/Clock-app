@@ -1,6 +1,16 @@
 import City from '../Cities/components/City'
 
-const Favorites = ({favoritesData}) => {
+import useFavorites from '../../state/useFavorites';
+
+import { useEffect } from 'react';
+
+const Favorites = () => {
+
+    const {favoritesIds, totalFavorites, favoritesData, saveDeleteFavoritesIds, saveDeleteFavoritesData, getFavoritesData} = useFavorites()
+
+    useEffect(() => {
+        getFavoritesData()
+    }, [])
 
     console.log('resultado', favoritesData)
 
