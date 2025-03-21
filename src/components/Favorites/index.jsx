@@ -10,20 +10,18 @@ import styles from './Favorites.module.css'
 
 const Favorites = () => {
 
-    const {favoritesIds, totalFavorites, favoritesData, saveDeleteFavoritesIds, saveDeleteFavoritesData, getFavoritesData} = useFavorites()
+    const {favoritesIds, totalFavorites, favoritesData, favoritesTime, saveDeleteFavoritesIds, saveDeleteFavoritesData, saveDeleteFavoritesTime, getFavoritesData, getFavoritesTime} = useFavorites()
 
     useEffect(() => {
         getFavoritesData()
     }, [])
-
-    console.log('resultado', favoritesData)
 
     const renderFavorites = favoritesData.map((item) => {
         const id = item.data.id
         const city = item.data.city
         const country = item.data.countryCode
         return (
-            <Favorite key={id} id={id} city={city} country={country} favoritesIds={favoritesIds} saveDeleteFavoritesIds={saveDeleteFavoritesIds} saveDeleteFavoritesData={saveDeleteFavoritesData}/>
+            <Favorite key={id} id={id} city={city} country={country} />
         )
     }) 
     

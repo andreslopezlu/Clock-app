@@ -1,11 +1,12 @@
 import styles from './Delete.module.css'
 
-const Delete = ({id, saveDeleteFavoritesIds, saveDeleteFavoritesData, toggleFavorite}) => {
+const Delete = ({id, saveDeleteFavoritesIds, saveDeleteFavoritesData, saveDeleteFavoritesTime, toggleFavorite}) => {
 
-    const handleDelete = () => {
+    const handleDelete = async () => {
         toggleFavorite(id)
         saveDeleteFavoritesIds(id)
-        saveDeleteFavoritesData()
+        await saveDeleteFavoritesData()
+        await saveDeleteFavoritesTime()
     }
 
     return (

@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 
 import Quote from './components/Quote'
+import FavoritePlacesTime from './components/FavoritePlacesTime'
 import Greeting from './components/Greeting'
 import Time from './components/Time'
 import Location from './components/Location'
@@ -70,6 +71,7 @@ const Clock = () => {
             <main className={`${styles.main} ${!isQuoteVisible && styles.increaseHeader}`}>
                 <div className={styles.lightDiv}>
                     <Quote quotesData={quotesData} getQuotesData={getQuotesData} isQuoteVisible={isQuoteVisible} className={styles.quote} />
+                    <FavoritePlacesTime time={time} />
                     <Greeting time={time} timeOfTheDay={timeOfTheDay} className={styles.greeting} />
                     <Time time={time} className={styles.time} />
                     <Location locationData={locationData} handleDetailsButton={handleDetailsButton} isDetailsVisible={isDetailsVisible} className={styles.location} />

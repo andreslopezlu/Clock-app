@@ -1,11 +1,12 @@
 import styles from './Add.module.css'
 
-const Add = ({id, saveDeleteFavoritesIds, saveDeleteFavoritesData, toggleFavorite}) => {
+const Add = ({id, saveDeleteFavoritesIds, saveDeleteFavoritesData, saveDeleteFavoritesTime, toggleFavorite}) => {
 
-    const handleAdd = () => {
+    const handleAdd = async () => {
         toggleFavorite(id)
         saveDeleteFavoritesIds(id)
-        saveDeleteFavoritesData()
+        await saveDeleteFavoritesData()
+        await saveDeleteFavoritesTime()
     }
 
     return (
