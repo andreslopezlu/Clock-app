@@ -8,7 +8,7 @@ import styles from './Favorite.module.css'
 
 const Favorite = ({id, city, country}) => {
 
-    const {favoritesIds, totalFavorites, favoritesData, saveDeleteFavoritesIds, saveDeleteFavoritesData, getFavoritesData} = useFavorites()
+    const {favoritesIds, totalFavorites, favoritesData, favoritesTime, saveDeleteFavoritesIds, saveDeleteFavoritesData, saveDeleteFavoritesTime, getFavoritesData, getFavoritesTime} = useFavorites()
 
     const [isFavorite, setIsFavorite] = useState(favoritesIds.includes(id)) 
 
@@ -21,7 +21,7 @@ const Favorite = ({id, city, country}) => {
             <div className={styles.cityContainer}>
                 <li className={styles.locationText}>{`${city}, ${country}`}</li>
                 <div className={styles.favoriteButton}>
-                    {isFavorite ? <Delete id={id} saveDeleteFavoritesIds={saveDeleteFavoritesIds} saveDeleteFavoritesData={saveDeleteFavoritesData} toggleFavorite={toggleFavorite} /> : null}
+                    {isFavorite ? <Delete id={id} saveDeleteFavoritesIds={saveDeleteFavoritesIds} saveDeleteFavoritesData={saveDeleteFavoritesData} saveDeleteFavoritesTime={saveDeleteFavoritesTime} toggleFavorite={toggleFavorite} /> : null}
                 </div>
             </div>
         </>
