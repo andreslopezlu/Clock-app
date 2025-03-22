@@ -2,7 +2,7 @@ import axios from "axios"
 
 const fetchCityTimeApi = () => {
 
-    async function getCityTime(id) {
+    async function getCityTime(id, controller) {
 
         const options = {
             method: 'GET',
@@ -10,7 +10,8 @@ const fetchCityTimeApi = () => {
             headers: {
               'x-rapidapi-key': `${import.meta.env.VITE_RAPIDAPI_KEY}`,
               'x-rapidapi-host': 'wft-geo-db.p.rapidapi.com'
-            }
+            },
+            signal: controller.signal,
         }
 
         try {

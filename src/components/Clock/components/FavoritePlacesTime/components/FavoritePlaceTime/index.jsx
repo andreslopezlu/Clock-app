@@ -5,7 +5,8 @@ const FavoritePlaceTime = ({id, city, country, time}) => {
     return (
         <>
             <div className={styles.cityContainer}>
-                <li className={styles.locationText}>{`${city}, ${country}`} <span className={styles.favoriteTime}>{time}</span></li>
+                <div className={styles.locationText}>{`${city}, ${country}`}</div>
+                <div className={styles.favoriteTime}>{time}</div>
             </div>
         </>
     )

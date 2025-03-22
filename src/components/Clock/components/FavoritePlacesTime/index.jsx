@@ -1,48 +1,56 @@
-import { useDeferredValue, useEffect, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import FavoritePlaceTime from "./components/FavoritePlaceTime"
 
-import useFavorites from "../../../../state/useFavorites"
+import updateFavoritesTime from "../../../../utils/updateFavoritesTime"
 
-const FavoritePlacesTime = ({time}) => {
+import { FAVORITES_DATA_LOCAL_STORAGE } from "../../../../utils/constants"
 
-    const {favoritesIds, totalFavorites, favoritesData, favoritesTime, saveDeleteFavoritesIds, saveDeleteFavoritesData, saveDeleteFavoritesTime, getFavoritesData, getFavoritesTime} = useFavorites()
-    
+const FavoritePlacesTime = () => {
+
+    const [hour, setHour] = useState()
+
+    const data = useRef(JSON.parse(localStorage.getItem(FAVORITES_DATA_LOCAL_STORAGE)) || [])
+
     useEffect(() => {
-        getFavoritesTime()
-        getFavoritesData()
+
+        let controller = new AbortController();
+
+        const getData = async () => {
+            try {
+                const updatedData = await updateFavoritesTime(controller)
+                setHour(updatedData)
+            } catch(error) {
+                console.error(error)
+            }
+        }
+        getData()
+
+        return () => {
+            controller?.abort();
+        }
     }, [])
 
-    // useEffect(() => {
-    //     setTimeout(() => {
-    //         saveDeleteFavoritesTime()
-    //     }, 2000);
-    //     getFavoritesTime()
-    // }, [time])
+    console.log(hour)
+    console.log(data)
 
-    console.log('favs', favoritesData)
-
-    console.log('times', favoritesTime)
-    
     const renderFavoritesTime = () => {
         let result = []
-        for (const i in favoritesData) {
-            const id = favoritesData[i].data.id
-            const city = favoritesData[i].data.city
-            const country = favoritesData[i].data.countryCode
-            const time = favoritesTime[i].data.slice(0, 5)
-
-            console.log('se renderiza')
-            console.log('estoy aquiiii')
+        let favsData = data.current
+        for (const i in favsData) {
+            const id = favsData[i].data.id
+            const city = favsData[i].data.city
+            const country = favsData[i].data.countryCode
+            const time = hour === undefined || hour[i] === undefined ? '' : hour[i].data.slice(0, 5)
             
-            const item = <FavoritePlaceTime key={id} id={id} city={city} country={country} time={time} />
+            const item = <FavoritePlaceTime key={id} id={id} city={city} country={country} time={time}/>
             result.push(item)
         }
         return result
     }
-    
+
     return (
         <ul>
-            {renderFavoritesTime()}
+            {data === undefined ? '' : renderFavoritesTime()}
         </ul>
     )
 }

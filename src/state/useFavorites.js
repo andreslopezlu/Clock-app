@@ -88,9 +88,11 @@ const useFavorites = create((set, get) => {
     
             localStorage.setItem(FAVORITES_TIME_LOCAL_STORAGE, JSON.stringify(result));
 
-            // set(() => ({
-            //     favoritesTime: result
-            // }))
+            set(() => ({
+                favoritesTime: result
+            }))
+
+            return result
         },
         getFavoritesTime: () => {
             const result = JSON.parse(localStorage.getItem(FAVORITES_TIME_LOCAL_STORAGE)) || []
