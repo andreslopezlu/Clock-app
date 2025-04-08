@@ -16,7 +16,7 @@ function App() {
   
   return (
     <>
-      <div className={`${styles.background} ${timeOfTheDay == 'MORNING' ? styles.morning : timeOfTheDay == 'AFTERNOON' ? styles.morning : styles.evening}`}>
+      <div className={`${styles.background} ${timeOfTheDay == 'MORNING' ? styles.morning : timeOfTheDay == 'AFTERNOON' ? styles.morning : timeOfTheDay == 'EVENING' ? styles.evening : null}`}>
       <div className={styles.darkDiv}></div>
         <Outlet />
       </div>

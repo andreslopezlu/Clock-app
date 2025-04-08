@@ -1,4 +1,4 @@
-import { createBrowserRouter, RouterProvider, Route } from 'react-router-dom';
+import { createBrowserRouter, RouterProvider, Route, Navigate } from 'react-router-dom';
 import { createRoutesFromElements } from 'react-router';
 
 import App from '../components/App/App'
@@ -11,6 +11,7 @@ const router = createBrowserRouter(
   createRoutesFromElements(
     <>
       <Route path='/' element={<App />} errorElement={<ErrorPage />}>
+        <Route index element={<Navigate to="/welcome" />} />
         <Route path='/home' element={<Home />}  />
         <Route path="/welcome" element={<Welcome />} />
         <Route path="/profile" element={<Profile />} />

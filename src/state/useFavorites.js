@@ -19,6 +19,9 @@ const useFavorites = create((set, get) => {
         totalFavorites: initialTotal,
         favoritesData: [],
         favoritesTime: [],
+        isLoadingFavoritesIds: true,
+        isLoadingFavoritesData: true,
+        isLoadingFavoritesTime:true,
         saveDeleteFavoritesIds: (id) => {
             const favorites = JSON.parse(localStorage.getItem(FAVORITES_IDS_LOCAL_STORAGE))
             const favoriteIndex = favorites.indexOf(id)
@@ -27,7 +30,8 @@ const useFavorites = create((set, get) => {
             localStorage.setItem(FAVORITES_IDS_LOCAL_STORAGE, JSON.stringify(favorites));
             set(() => ({
                 favoritesIds: favorites,
-                totalFavorites: total
+                totalFavorites: total,
+                isLoadingFavoritesIds: false
             }))
         },
         saveDeleteFavoritesData: async () => {
@@ -55,7 +59,8 @@ const useFavorites = create((set, get) => {
             localStorage.setItem(FAVORITES_DATA_LOCAL_STORAGE, JSON.stringify(result));
 
             set(() => ({
-                favoritesData: result
+                favoritesData: result,
+                isLoadingFavoritesData: false
             }))
         },
         getFavoritesData: () => {
@@ -89,7 +94,8 @@ const useFavorites = create((set, get) => {
             localStorage.setItem(FAVORITES_TIME_LOCAL_STORAGE, JSON.stringify(result));
 
             set(() => ({
-                favoritesTime: result
+                favoritesTime: result,
+                isLoadingFavoritesTime: false
             }))
 
             return result

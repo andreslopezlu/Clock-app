@@ -6,6 +6,8 @@ import Greeting from './components/Greeting'
 import Time from './components/Time'
 import Location from './components/Location'
 import LocationDetails from './components/LocationDetails'
+import Loader from '../Loader'
+import Error from '../Error'
 
 import useLocationData from '../../state/useLocationData'
 
@@ -45,25 +47,13 @@ const Clock = () => {
     }
 
     if(isLocationLoading || IsQuotesLoading || isTimeZoneLoading) {
-        console.log("Cargando");
-        return (
-            <>
-                <div className={styles.loaderContainer}>
-                    <div className={styles.loader}></div>
-                </div>
-            </>
-        )     
+        console.log("Cargando")
+        return <Loader /> 
     }
 
     if(locationError || quotesError || timeZoneError) {
-        console.error("Error");
-        return (
-            <>
-                <div className={styles.errorContainer}>
-                    <p className={styles.error}>An error has occurred</p>
-                </div>
-            </>
-        )   
+        console.error("Error")
+        return <Error />   
     }
 
     return (
