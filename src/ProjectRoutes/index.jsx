@@ -4,7 +4,7 @@ import { createRoutesFromElements } from 'react-router';
 import App from '../components/App/App'
 import Home from '../views/Home'
 import Welcome from '../views/Welcome'
-import Profile from '../views/profile'
+import Profile from '../views/Profile'
 import ErrorPage from '../views/ErrorPage'
 
 const router = createBrowserRouter(
