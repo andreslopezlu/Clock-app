@@ -5,12 +5,17 @@ import ReactPaginate from 'react-paginate'
 import Search from '../../components/Search'
 import Cities from '../../components/Cities'
 import Favorites from '../../components/Favorites'
+import Loader from '../../components/Loader'
+
+import useFavorites from '../../state/useFavorites'
 
 import useCitiesApi from '../../hooks/useCitiesApi'
 
 import styles from './Profile.module.css' 
 
 const Profile = () => {
+    const {isLoadingFavoritesIds, isLoadingFavoritesData, isLoadingFavoritesTime} = useFavorites()
+
     const {citiesData, citiesIsLoading, citiesError, getCitiesData} = useCitiesApi()
     const [currentPage, setCurrentPage] = useState(0);
     const searchValue = useRef('')
@@ -37,6 +42,11 @@ const Profile = () => {
         const offset = selected * itemsPerPage
         getCitiesData(searchValue.current, `${offset}`)
         setCurrentPage(selected)
+    }
+
+    if(isLoadingFavoritesIds | isLoadingFavoritesData | isLoadingFavoritesTime) {
+        console.log("Cargando")
+        return <Loader /> 
     }
 
     return (
