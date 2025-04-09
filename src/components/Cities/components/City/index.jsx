@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 import Add from './components/Add'
 
@@ -16,6 +16,10 @@ const City = ({id, city, country}) => {
     const toggleFavorite = (id) => {
         setIsFavorite(!favoritesIds.includes(id))
     }
+
+    useEffect(() => {
+        setIsFavorite(favoritesIds.includes(id))
+    }, [favoritesIds])
 
     return (
         <>
