@@ -19,10 +19,13 @@ const useFavorites = create((set, get) => {
         totalFavorites: initialTotal,
         favoritesData: [],
         favoritesTime: [],
-        isLoadingFavoritesIds: true,
-        isLoadingFavoritesData: true,
-        isLoadingFavoritesTime:true,
+        isLoadingFavoritesIds: false,
+        isLoadingFavoritesData: false,
+        isLoadingFavoritesTime:false,
         saveDeleteFavoritesIds: (id) => {
+            set(() => ({
+                isLoadingFavoritesIds: true
+            }))
             const favorites = JSON.parse(localStorage.getItem(FAVORITES_IDS_LOCAL_STORAGE))
             const favoriteIndex = favorites.indexOf(id)
             favorites.includes(id) ? favorites.splice(favoriteIndex, 1) : favorites.push(id)
@@ -35,6 +38,9 @@ const useFavorites = create((set, get) => {
             }))
         },
         saveDeleteFavoritesData: async () => {
+            set(() => ({
+                isLoadingFavoritesData: true
+            }))
             const ids = get().favoritesIds
             const {getCityDetailData} = fetchCityDetailsApi()
 
@@ -70,6 +76,9 @@ const useFavorites = create((set, get) => {
             }))
         },
         saveDeleteFavoritesTime: async () => {
+            set(() => ({
+                isLoadingFavoritesTime: true
+            }))
             const ids = get().favoritesIds
             const {getCityTime} = fetchCityTimeApi()
 
