@@ -10,10 +10,10 @@ const Favorite = ({id, city, country}) => {
 
     const {favoritesIds, totalFavorites, favoritesData, favoritesTime, saveDeleteFavoritesIds, saveDeleteFavoritesData, saveDeleteFavoritesTime, getFavoritesData, getFavoritesTime} = useFavorites()
 
-    const [isFavorite, setIsFavorite] = useState(favoritesIds.includes(id)) 
+    const [isAdded, setIsAdded] = useState(favoritesIds.includes(id)) 
 
-    const toggleFavorite = (id) => {
-        setIsFavorite(!favoritesIds.includes(id))
+    const toggleDeleteButton = (id) => {
+        setIsAdded(!favoritesIds.includes(id))
     }
 
     return (
@@ -21,7 +21,7 @@ const Favorite = ({id, city, country}) => {
             <div className={styles.cityContainer}>
                 <li className={styles.locationText}>{`${city}, ${country}`}</li>
                 <div className={styles.favoriteButton}>
-                    {isFavorite ? <Delete id={id} saveDeleteFavoritesIds={saveDeleteFavoritesIds} saveDeleteFavoritesData={saveDeleteFavoritesData} saveDeleteFavoritesTime={saveDeleteFavoritesTime} toggleFavorite={toggleFavorite} /> : null}
+                    {isAdded ? <Delete id={id} saveDeleteFavoritesIds={saveDeleteFavoritesIds} saveDeleteFavoritesData={saveDeleteFavoritesData} saveDeleteFavoritesTime={saveDeleteFavoritesTime} toggleDeleteButton={toggleDeleteButton} /> : null}
                 </div>
             </div>
         </>

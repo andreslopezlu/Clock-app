@@ -8,7 +8,7 @@ import Favorites from '../../components/Favorites'
 
 import useCitiesApi from '../../hooks/useCitiesApi'
 
-import styles from './Profile.module.css'
+import styles from './Profile.module.css' 
 
 const Profile = () => {
     const {citiesData, citiesIsLoading, citiesError, getCitiesData} = useCitiesApi()
